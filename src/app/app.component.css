@@ -28,6 +28,30 @@ md-sidenav-layout.m2app-dark {
   color: white;
 }
 
+.footer{
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  font-size: 8px;
+}
+
+.footer-text{
+  font-size: 14px;
+  text-align: center;
+  width: 100%
+}
+
+.left-2{
+  margin-left: 2%;
+}
+
+.parent-container{
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
 .app-icon-button {
   box-shadow: none;
   user-select: none;
@@ -71,3 +95,4 @@ md-sidenav-layout.m2app-dark {
 .app-progress {
   margin: 20px;
 }
+

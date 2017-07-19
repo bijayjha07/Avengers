@@ -1,15 +1,24 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from '@angular/material';
-import {Material2AppAppComponent, DialogContent} from './app.component';
+//import {AvengerAppComponent, DialogContent} from './app.component';
+import {AvengerAppComponent} from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpModule,
+    ReactiveFormsModule,
     MaterialModule.forRoot(),
+
   ],
-  declarations: [Material2AppAppComponent, DialogContent],
-  entryComponents: [DialogContent],
-  bootstrap: [Material2AppAppComponent],
+  declarations: [AvengerAppComponent],
+  entryComponents: [],
+  bootstrap: [AvengerAppComponent],
 })
 export class MaterialAppModule { }

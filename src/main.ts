@@ -11,16 +11,16 @@ if (environment.production) {
  * JIT compile.
  */
 
-// import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-// import {MaterialAppModule} from './app/app.module';
-// platformBrowserDynamic().bootstrapModule(MaterialAppModule);
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {MaterialAppModule} from './app/app.module';
+platformBrowserDynamic().bootstrapModule(MaterialAppModule);
 
 
 /**
  * AoT compile.
  * First run `./node_modules/.bin/ngc -p ./src/`
  */
-
+/*
 import {platformBrowser} from '@angular/platform-browser';
 import {MaterialAppModuleNgFactory} from './aot/app/app.module.ngfactory';
-platformBrowser().bootstrapModuleFactory(MaterialAppModuleNgFactory);
+platformBrowser().bootstrapModuleFactory(MaterialAppModuleNgFactory);*/

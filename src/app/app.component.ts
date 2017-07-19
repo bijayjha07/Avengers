@@ -1,57 +1,55 @@
 import {Component, Optional} from '@angular/core';
-import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'material2-app-app',
+  selector: 'avenger-app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
 })
-export class Material2AppAppComponent {
-  isDarkTheme: boolean = false;
+
+
+
+export class AvengerAppComponent {
+  isDarkTheme: boolean = true;
   lastDialogResult: string;
 
-  foods: any[] = [
-    {name: 'Pizza', rating: 'Excellent'},
-    {name: 'Burritos', rating: 'Great'},
-    {name: 'French fries', rating: 'Pretty good'},
-  ];
+  rForm: FormGroup;
+  lForm: FormGroup;
+  post:any;                     // A property for our submitted form
+  rePassword:string = '';
+  password:string = '';
+  firstName:string = '';
+  lastName:string = '';
+  ntId:string = '';
+  email:string = '';
+  loginPassword:string='';
+  username:string='';
 
-  progress: number = 0;
+  constructor(private fb: FormBuilder) {
 
-  constructor(private _dialog: MdDialog, private _snackbar: MdSnackBar) {
-    // Update the value for the progress-bar on an interval.
-    setInterval(() => {
-      this.progress = (this.progress + Math.floor(Math.random() * 4) + 1) % 100;
-    }, 200);
+    this.rForm = fb.group({
+      'password' : [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(14)])],
+      'rePassword' : [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(14)])],
+      'fname' : [null, Validators.required],
+      'lname' : [null, Validators.required],
+      'email' : [null, Validators.required],
+      'ntId' : [null, Validators.required]
+    });
+
+    this.lForm = fb.group({
+      'loginPassword' : [null, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(14)])],
+      'username' : [null, Validators.required],
+    });
   }
 
-  openDialog() {
-    let dialogRef = this._dialog.open(DialogContent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.lastDialogResult = result;
-    })
+  addPost(post) {
+    console.log(post);
+    this.password = post.password;
+    this.rePassword = post.rePassword;
+    this.firstName = post.fname;
+    this.lastName = post.lname;
+    this.email = post.email;
+    this.ntId = post.ntId;
   }
 
-  showSnackbar() {
-    this._snackbar.open('YUM SNACKS', 'CHEW');
-  }
-}
-
-
-@Component({
-  template: `
-    <p>This is a dialog</p>
-    <p>
-      <label>
-        This is a text box inside of a dialog.
-        <input #dialogInput>
-      </label>
-    </p>
-    <p> <button md-button (click)="dialogRef.close(dialogInput.value)">CLOSE</button> </p>
-  `,
-})
-export class DialogContent {
-  constructor(@Optional() public dialogRef: MdDialogRef<DialogContent>) { }
 }
